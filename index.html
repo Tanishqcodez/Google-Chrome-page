@@ -6,12 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>New Tab</title>
-    <link rel="stylesheet" href="build.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 <style>
     /* Nav styling start */
@@ -215,6 +214,10 @@
         padding: 1rem;
         padding-left: 0rem;
     }
+    #search{
+        border: 2px solid black;
+
+    }
 
     /* search container ends */
 
@@ -336,6 +339,7 @@
         color: #8CC0EF;
         border-top-right-radius: 0.5rem;
     }
+
     #apps-container>a:nth-child(2) {
         color: #FD6769;
         border-top-right-radius: 0.5rem;
@@ -446,13 +450,15 @@
 </style>
 
 <body class="bg-[#30303A] text-[#FFFFFF]">
-    <header>
+    <header class="p-4">
         <nav>
+            <p class="float-left" id="status">Status: <span class="text-green-600">Connected!</span></p>
             <ul class="flex space-x-5 p-8 text-xl  justify-center">
                 <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox">
                     <li class="cursor-pointer hover-underline-animation">Gmail</li>
                 </a>
-                <a href="https://search.google.com/u/1/search-console?resource_id=https%3A%2F%2Fcodewithtanishq.netlify.app%2F">
+                <a
+                    href="https://search.google.com/u/1/search-console?resource_id=https%3A%2F%2Fcodewithtanishq.netlify.app%2F">
                     <li class="cursor-pointer hover-underline-animation">GSC</li>
                 </a>
                 <a href="https://codewithtanishq.netlify.app/">
@@ -466,7 +472,7 @@
     </header>
     <section class="h-[100%] ">
         <div class="flex justify-center">
-            <img src="img/react.gif" alt="">
+            <img src="img/react.gif" alt="" draggable="false">
         </div>
         <h1 style="font-family: 'Pacifico', cursive;" class="heading">Coding is love</h1>
         <div>
@@ -493,7 +499,7 @@
     <main class="flex justify-center">
         <div id="search-container" style="margin-top: 5%;">
             <div id="search-input-container">
-                <img src="https://assets.codepen.io/1468070/Google+G+Icon.png" alt="" />
+                <img src="https://assets.codepen.io/1468070/Google+G+Icon.png" alt="" draggable="false" />
                 <input type="text" placeholder=" Search anything" id="search" onload="handleLoad()" />
             </div>
 
@@ -506,14 +512,14 @@
     <section class="flex justify-center ">
         <div id="apps-container">
             <a href="https://codewithtanishq.netlify.app/">
-                <img src="img/logo.png" alt="" class="h-9 w-9 rounded-full">
+                <img src="img/logo.png" alt="" class="h-9 w-9 rounded-full" draggable="false">
                 <div class="label">
                     <span class="name">CodewithTanishq</span>
                     <span class="url">codewithtanishq.netlify.app</span>
                 </div>
             </a>
             <a href="https://codewithharry.com">
-                <img src="img/harry.jpg" alt="" class="h-9 w-9 rounded-full">
+                <img src="img/harry.jpg" alt="" class="h-9 w-9 rounded-full" draggable="false">
                 <div class="label">
                     <span class="name">CodewithHarry</span>
                     <span class="url">codewithharry.com</span>
@@ -548,7 +554,7 @@
                 </div>
             </a>
             <a href="https://replit.com/~">
-                <img src="/img/replit.png" class="h-9 w-9 rounded-full" alt="">
+                <img src="/img/replit.png" class="h-9 w-9 rounded-full" alt="" draggable="false">
                 <div class="label">
                     <span class="name">Replit</span>
                     <span class="url">replit.com</span>
@@ -568,7 +574,7 @@
                     <span class="url">stackoverflow.com</span>
                 </div>
             </a>
-            
+
         </div>
 
 
@@ -605,6 +611,16 @@
                 googleSearch();
             }
         });
+
+
+        let statusElem = document.getElementById('status')
+        const connectionTrue = `<span class="text-green-600">Connected!</span>`
+        const connectionFalse= `<span class="text-red-600">Not Connected!</span>`
+        if (navigator.onLine) {
+            statusElem.innerHTML = "Status: " + connectionTrue
+        } else {
+            statusElem.innerHTML = "Status: " + connectionFalse
+        }
     </script>
 </body>
 
